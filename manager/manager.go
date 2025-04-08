@@ -10,8 +10,8 @@ import (
 
 type Manager struct {
 	Pending       queue.Queue
-	TaskDb        map[string][]*task.Task
-	EventDb       map[string][]*task.TaskEvent
+	TaskDb        map[string][]task.Task
+	EventDb       map[string][]task.TaskEvent
 	Workers       []string
 	WorkerTaskMap map[string][]uuid.UUID
 	TaskWorkerMap map[uuid.UUID]string
@@ -21,7 +21,7 @@ func (m *Manager) SelectWorker() {
 	fmt.Println("I will select an appropriate worker")
 }
 
-func (m *Manager) UpdateTask() {
+func (m *Manager) UpdateTasks() {
 	fmt.Println("I will update task")
 }
 
