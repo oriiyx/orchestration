@@ -21,6 +21,7 @@ type Api struct {
 
 func (a *Api) initRouter() {
 	a.Router = chi.NewRouter()
+
 	a.Router.Route("/tasks", func(r chi.Router) {
 		r.Post("/", a.StartTaskHandler)
 		r.Get("/", a.GetTasksHandler)
@@ -28,6 +29,11 @@ func (a *Api) initRouter() {
 			r.Delete("/", a.StopTaskHandler)
 		})
 	})
+
+	a.Router.Route("/stats", func(r chi.Router) {
+		r.Get("/", a.GetStatsHandler)
+	})
+
 }
 
 func (a *Api) Start() {
